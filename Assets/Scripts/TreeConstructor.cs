@@ -11,6 +11,8 @@ public class TreeConstructor : MonoBehaviour
     public int sampleBlocksLeft = 50;
     public int branchProbability = 20;
     private int branchChance = 0;
+    public bool autoGenerateTrees = false;
+    private float Timer = 4f;
     private void Update()
     {
 
@@ -18,6 +20,20 @@ public class TreeConstructor : MonoBehaviour
         {
             StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, sampleBlocksLeft, sampleDestroyTime));
         }
+        if (Input.GetKey("u"))
+        {
+            autoGenerateTrees = !autoGenerateTrees;
+        }
+        if (autoGenerateTrees)
+        {
+            Timer += Time.deltaTime;
+            while(Timer >= 4f)
+            {
+                StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, sampleBlocksLeft, sampleDestroyTime));
+                Timer = 0f;
+            }
+        }
+
     }
 
     IEnumerator generateTree(Vector3 spawnPoint, Vector3 spawnRotation, int blockHeight, int blocksLeft, int DestroyTimer)
