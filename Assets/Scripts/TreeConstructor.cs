@@ -40,28 +40,37 @@ public class TreeConstructor : MonoBehaviour
     {
         Debug.Log("Generating Tree...");
         branchChance = 0;
+        float r = 85;
+        float g = 75;
+        float b = 55;
 
-        while(blocksLeft > 0)
+        while (blocksLeft > 0)
         {
             
-            GameObject currentBlock = Instantiate(Block, spawnPoint + new Vector3(0, blockHeight / 2, 0), Quaternion.identity);
-            
+            GameObject currentBlock = Instantiate(Block, spawnPoint + new Vector3(0, blockHeight / 2, 0), Quaternion.identity);            
             currentBlock.transform.localEulerAngles = spawnRotation;
-            branchChance += branchProbability;
-            blocksLeft--;
 
             
+            //currentBlock.GetComponent<MeshRenderer>().material.color = Color.green;
+
+            r++;
+            g++;
+            b++;
+
+            branchChance += branchProbability;
+            blocksLeft--;
 
             float xAxisRotationChange = Random.Range(-21, 21);
             float zAxisRotationChange = Random.Range(-21, 21);
             spawnPoint += new Vector3(-spawnRotation.z / 20, blockHeight, spawnRotation.x / 20);
             spawnRotation += new Vector3(xAxisRotationChange, 0, zAxisRotationChange);
+
             yield return new WaitForSeconds(0.1f);
+
             if (DestroyTimer > 0)
             {
                 Destroy(currentBlock, DestroyTimer);
             }
-
             if (Random.Range(1, 101) <= branchChance)
             {
                 Debug.Log("Branched");
