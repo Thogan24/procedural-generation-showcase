@@ -22,15 +22,17 @@ public class OrbitalConstructor : MonoBehaviour
     {
         Debug.Log("Generating Circle...");
 
+        Instantiate(Block, spawnPoint, Quaternion.identity);
+
         // Takes the circumference and divides it by 2pi
         float radius = (blocksLeft * blockHeight) / (2 * Mathf.PI);
-        float angleIncrement = 360 / blocksLeft;
-        for (int i = blocksLeft; i > 0; i--)
+        float angleIncrement = ((360 / blocksLeft) * Mathf.PI) / 180;
+        for (int i = 0; i < blocksLeft; i++)
         {
-            float xPos = Mathf.Sin(15) * radius;
-            float zPos = radius - xPos;
+            float xPos = Mathf.Sin(angleIncrement * i) * radius;
+            float zPos = Mathf.Cos(angleIncrement * i) * radius;
             Vector3 position = new Vector3(xPos, 0, zPos);
-            yield return new WaitForSeconds(3 / blocksLeft);
+            yield return new WaitForSeconds(3f / (float) blocksLeft);
             Instantiate(Block, spawnPoint + position, Quaternion.identity);
         }
     }
