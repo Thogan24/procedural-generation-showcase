@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7482313102448985190}
   - component: {fileID: 3267296830669932298}
   m_Layer: 0
-  m_Name: TreeBlock
+  m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
