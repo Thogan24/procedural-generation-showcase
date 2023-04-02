@@ -266,9 +266,9 @@ MonoBehaviour:
   sampleSpawnPoint: {x: 0, y: 0, z: 0}
   sampleSpawnRotation: {x: 0, y: 0, z: 0}
   sampleDestroyTime: 3
-  sampleBlocksLeft: 50
+  sampleBlocksLeft: 1000
   branchProbability: 20
-  autoGenerateTrees: 0
+  autoGenerateTrees: 1
 --- !u!114 &920080465
 MonoBehaviour:
   m_ObjectHideFlags: 0
