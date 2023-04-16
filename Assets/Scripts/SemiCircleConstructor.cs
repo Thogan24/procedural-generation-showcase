@@ -38,7 +38,7 @@ public class SemiCircleConstructor : MonoBehaviour
 
             for (int j = 0; j < numBlocks; j++)
             {
-                if (xOutFromOrigin <= numBlocks / 4 && !xMaxReached)
+                if (xOutFromOrigin <= (numBlocks / 4) && !xMaxReached)
                 {
                     xOutFromOrigin += 1;
                 }
@@ -58,7 +58,7 @@ public class SemiCircleConstructor : MonoBehaviour
 
 
 
-
+                // -1
                 if (zOutFromOrigin >= -(numBlocks / 4) && !zMinReached)
                 {
                     zOutFromOrigin -= 1;
@@ -69,12 +69,18 @@ public class SemiCircleConstructor : MonoBehaviour
                     zOutFromOrigin++;
                 }
                 // Add to Array
-                Instantiate(Block, spawnPoint - new Vector3(xOutFromOrigin, blockHeight / size, zOutFromOrigin), Quaternion.identity);
+                
+                GameObject currentBlock = Instantiate(Block, spawnPoint + new Vector3(xOutFromOrigin, blockHeight / size, zOutFromOrigin), Quaternion.identity);
+                if (DestroyTimer > 0)
+                {
+                    Destroy(currentBlock, DestroyTimer);
+                }
+                Debug.Log(xOutFromOrigin);
             }
 
 
 
-            yield return new WaitForSeconds(3f / (float) 1);
+            yield return new WaitForSeconds(3f / (float) size);
         }
 
         

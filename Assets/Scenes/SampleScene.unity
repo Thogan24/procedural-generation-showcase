@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 920080463}
   - component: {fileID: 920080464}
   - component: {fileID: 920080465}
+  - component: {fileID: 920080466}
   m_Layer: 0
   m_Name: The Constructor
   m_TagString: Untagged
@@ -268,7 +269,7 @@ MonoBehaviour:
   sampleDestroyTime: 3
   sampleBlocksLeft: 1000
   branchProbability: 20
-  autoGenerateTrees: 1
+  autoGenerateTrees: 0
 --- !u!114 &920080465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +287,22 @@ MonoBehaviour:
   sampleSpawnRotation: {x: 0, y: 0, z: 0}
   sampleDestroyTime: 3
   sampleBlocksLeft: 50
+--- !u!114 &920080466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920080462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34ed7997eda0bff4d9c91141841b2f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Block: {fileID: 1832581053466536651, guid: a2e819f6ae8ee1e4d9bc9c53848c2aa6, type: 3}
+  sampleSpawnPoint: {x: 0, y: 5, z: 0}
+  sampleDestroyTime: 3
+  sampleSize: 5
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
