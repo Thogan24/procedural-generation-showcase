@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -269,7 +269,7 @@ MonoBehaviour:
   sampleDestroyTime: 3
   sampleBlocksLeft: 1000
   branchProbability: 20
-  autoGenerateTrees: 0
+  autoGenerateTrees: 1
 --- !u!114 &920080465
 MonoBehaviour:
   m_ObjectHideFlags: 0
