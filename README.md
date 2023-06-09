@@ -1,7 +1,7 @@
 # Procedural Generation Showcase
 
-This project uses procedural generation and algorithms to create trees and other objects
+This project uses procedural generation and recursive algorithms to create trees and other objects
 
-Made in Unity
+Made in Unity/C#
 
 ![Demo](./TreeSimulationGIF.gif)
