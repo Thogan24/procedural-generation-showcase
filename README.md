@@ -4,4 +4,4 @@ This project uses procedural generation and recursive algorithms to create trees
 
 Made in Unity/C#
 
-![Demo](./TreeSimulationGIF.gif)
+![Demo](./TreeBuilding.gif)
