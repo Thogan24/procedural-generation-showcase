@@ -9,12 +9,9 @@ public class UI : MonoBehaviour
     public GameObject Panel;
     public Slider branchProbabilitySlider;
     public TextMeshProUGUI branchProbabilityText;
+    public Slider blockSlider;
+    public TextMeshProUGUI blockText;
     public GameObject theConstructor;
-    
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -35,8 +32,11 @@ public class UI : MonoBehaviour
         {
             canvasGroup.alpha = 1f;
             TreeConstructor constructor = theConstructor.GetComponent<TreeConstructor>();
-            constructor.branchProbability = (int)branchProbabilitySlider.value;
+            constructor.branchProbability = (int) branchProbabilitySlider.value;
             branchProbabilityText.text = constructor.branchProbability.ToString();
+
+            constructor.BlocksLeft = (int) blockSlider.value;
+            blockText.text = constructor.BlocksLeft.ToString();
         }
         
     }
