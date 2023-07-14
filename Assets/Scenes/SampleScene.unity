@@ -181,7 +181,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: '20
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50feff731200dd94fb71f068580172ca, type: 2}
   m_sharedMaterial: {fileID: -2169177686920792096, guid: 50feff731200dd94fb71f068580172ca, type: 2}
@@ -372,6 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc4750e1a819244a875642cead0dd29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Panel: {fileID: 1073015492}
   branchProbabilitySlider: {fileID: 1388955050}
   branchProbabilityText: {fileID: 347577946}
   theConstructor: {fileID: 920080462}
@@ -874,6 +877,7 @@ GameObject:
   - component: {fileID: 1073015493}
   - component: {fileID: 1073015495}
   - component: {fileID: 1073015494}
+  - component: {fileID: 1073015496}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -940,6 +944,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073015492}
   m_CullTransparentMesh: 1
+--- !u!225 &1073015496
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073015492}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1085365582
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,7 +1173,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.24528301, g: 0.21867211, b: 0.21867211, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.24705882, g: 0.21960784, b: 0.21960784, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1180,7 +1196,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 20
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
