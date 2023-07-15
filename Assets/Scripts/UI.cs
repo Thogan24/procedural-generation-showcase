@@ -7,11 +7,22 @@ using TMPro;
 public class UI : MonoBehaviour
 {
     public GameObject Panel;
+   // public GameObject blockTextObject;
+    //public GameObject blockInputObject;
     public Slider branchProbabilitySlider;
     public TextMeshProUGUI branchProbabilityText;
     public Slider blockSlider;
     public TextMeshProUGUI blockText;
     public GameObject theConstructor;
+    public GameObject inputFieldObject;
+    public InputField inputField;
+
+
+    private void Awake()
+    {
+        inputField = inputFieldObject.GetComponent<InputField>();
+    }
+    
 
     void Update()
     {
@@ -39,5 +50,20 @@ public class UI : MonoBehaviour
             blockText.text = constructor.BlocksLeft.ToString();
         }
         
+    }
+
+    public void blockInputButton()
+    {
+        //blockTextObject.SetActive(false);
+        //blockInputObject.SetActive(true);
+    }
+
+    public void onValueChanged()
+    {
+        Debug.Log("Bruhington");
+        //InputField inputField = inputFieldObject.GetComponent<InputField>();
+        blockSlider.value = int.Parse(inputField.text); 
+        TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
+        constructor1.BlocksLeft = (int) blockSlider.value;
     }
 }

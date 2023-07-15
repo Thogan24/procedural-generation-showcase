@@ -38,7 +38,7 @@ public class TreeConstructor : MonoBehaviour
 
     IEnumerator generateTree(Vector3 spawnPoint, Vector3 spawnRotation, int blockHeight, int blocksLeft, int DestroyTimer)
     {
-        Debug.Log("Generating Tree...");
+        // Debug.Log("Generating Tree...");
         branchChance = 0;
         float r = 85;
         float g = 75;
@@ -73,7 +73,7 @@ public class TreeConstructor : MonoBehaviour
             }
             if (Random.Range(1, 101) <= branchChance)
             {
-                Debug.Log("Branched");
+                // Debug.Log("Branched");
                 branch(spawnPoint, spawnRotation, blockHeight, blocksLeft, DestroyTimer);
                 break;
             }
@@ -82,7 +82,7 @@ public class TreeConstructor : MonoBehaviour
 
 
 
-        Debug.Log("Tree Successfully Generated.");
+        // Debug.Log("Tree Successfully Generated.");
     }
 
     void branch(Vector3 spawnPoint, Vector3 spawnRotation, int blockHeight, int blocksLeft, int DestroyTimer)

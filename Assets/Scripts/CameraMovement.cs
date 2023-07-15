@@ -13,7 +13,7 @@ public class CameraMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(Input.GetKey(KeyCode.LeftShift));
+        // Debug.Log(Input.GetKey(KeyCode.LeftShift));
         speedMultiplier = Input.GetKey(KeyCode.LeftShift) ? shiftMultiplier : baseSpeed;
         speedMultiplier = Input.GetKey(KeyCode.LeftControl) ? controlMultiplier : speedMultiplier;
 
