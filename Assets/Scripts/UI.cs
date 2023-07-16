@@ -14,14 +14,16 @@ public class UI : MonoBehaviour
     public Slider blockSlider;
     public TextMeshProUGUI blockText;
     public GameObject theConstructor;
-    public GameObject inputFieldObject;
-    public TMP_InputField inputField;
-
+    public GameObject blockInputFieldObject;
+    public TMP_InputField blockInputField;
+    public GameObject branchInputFieldObject;
+    public TMP_InputField branchInputField;
 
     private void Awake()
     {
         //Debug.Log(inputFieldObject.GetComponent<TMP_InputField>());
-        inputField = inputFieldObject.GetComponent<TMP_InputField>();
+        blockInputField = blockInputFieldObject.GetComponent<TMP_InputField>();
+        branchInputField = branchInputFieldObject.GetComponent<TMP_InputField>();
     }
     
 
@@ -45,10 +47,10 @@ public class UI : MonoBehaviour
             canvasGroup.alpha = 1f;
             TreeConstructor constructor = theConstructor.GetComponent<TreeConstructor>();
             constructor.branchProbability = (int) branchProbabilitySlider.value;
-            branchProbabilityText.text = constructor.branchProbability.ToString();
+            branchInputField.text = constructor.branchProbability.ToString();
 
             constructor.BlocksLeft = (int) blockSlider.value;
-            inputField.text = constructor.BlocksLeft.ToString();
+            blockInputField.text = constructor.BlocksLeft.ToString();
         }
         
     }
@@ -59,19 +61,35 @@ public class UI : MonoBehaviour
         //blockInputObject.SetActive(true);
     }
 
-    public void onValueChanged()
+    public void branchOnValueChanged()
     {
         
-        if (int.Parse(inputField.text) > 10000)
+        if (int.Parse(branchInputField.text) > branchProbabilitySlider.maxValue)
         {
-            inputField.text = "1000";
+            branchInputField.text = branchProbabilitySlider.maxValue.ToString();
         }
-        else if (int.Parse(inputField.text) < 0)
+        else if (int.Parse(branchInputField.text) < branchProbabilitySlider.minValue)
         {
-            inputField.text = "0";
+            branchInputField.text = branchProbabilitySlider.minValue.ToString();
         }
-        blockSlider.value = int.Parse(inputField.text); 
+        branchProbabilitySlider.value = int.Parse(branchInputField.text); 
         TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
-        constructor1.BlocksLeft = (int) blockSlider.value;
+        constructor1.branchProbability = (int) blockSlider.value;
+    }
+
+    public void blockOnValueChanged()
+    {
+
+        if (int.Parse(blockInputField.text) > blockSlider.maxValue)
+        {
+            blockInputField.text = blockSlider.maxValue.ToString();
+        }
+        else if (int.Parse(blockInputField.text) < blockSlider.minValue)
+        {
+            blockInputField.text = blockSlider.minValue.ToString();
+        }
+        blockSlider.value = int.Parse(blockInputField.text);
+        TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
+        constructor1.BlocksLeft = (int)blockSlider.value;
     }
 }
