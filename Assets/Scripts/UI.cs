@@ -15,12 +15,13 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI blockText;
     public GameObject theConstructor;
     public GameObject inputFieldObject;
-    public InputField inputField;
+    public TMP_InputField inputField;
 
 
     private void Awake()
     {
-        inputField = inputFieldObject.GetComponent<InputField>();
+        //Debug.Log(inputFieldObject.GetComponent<TMP_InputField>());
+        inputField = inputFieldObject.GetComponent<TMP_InputField>();
     }
     
 
@@ -47,7 +48,7 @@ public class UI : MonoBehaviour
             branchProbabilityText.text = constructor.branchProbability.ToString();
 
             constructor.BlocksLeft = (int) blockSlider.value;
-            blockText.text = constructor.BlocksLeft.ToString();
+            inputField.text = constructor.BlocksLeft.ToString();
         }
         
     }
@@ -60,8 +61,15 @@ public class UI : MonoBehaviour
 
     public void onValueChanged()
     {
-        Debug.Log("Bruhington");
-        //InputField inputField = inputFieldObject.GetComponent<InputField>();
+        
+        if (int.Parse(inputField.text) > 10000)
+        {
+            inputField.text = "1000";
+        }
+        else if (int.Parse(inputField.text) < 0)
+        {
+            inputField.text = "0";
+        }
         blockSlider.value = int.Parse(inputField.text); 
         TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
         constructor1.BlocksLeft = (int) blockSlider.value;
