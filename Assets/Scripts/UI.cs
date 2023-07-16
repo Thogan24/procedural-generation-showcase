@@ -63,7 +63,12 @@ public class UI : MonoBehaviour
 
     public void branchOnValueChanged()
     {
-        
+        if(branchInputField.text == "")
+        {
+            branchInputField.text = branchProbabilitySlider.minValue.ToString();
+        }
+
+
         if (int.Parse(branchInputField.text) > branchProbabilitySlider.maxValue)
         {
             branchInputField.text = branchProbabilitySlider.maxValue.ToString();
