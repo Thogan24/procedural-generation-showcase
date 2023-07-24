@@ -18,6 +18,8 @@ public class UI : MonoBehaviour
     public TMP_InputField blockInputField;
     public GameObject branchInputFieldObject;
     public TMP_InputField branchInputField;
+    public Toggle toggle;
+    public GameObject advancedOptions;
 
     private void Awake()
     {
@@ -30,27 +32,42 @@ public class UI : MonoBehaviour
     void Update()
     {
         CanvasGroup canvasGroup = Panel.GetComponent<CanvasGroup>();
-
+        CanvasGroup canvasGroupAdvanced = advancedOptions.GetComponent<CanvasGroup>();
         
 
         if (Input.GetKey("q"))
         {
             canvasGroup.alpha = 0f;
+            canvasGroupAdvanced.alpha = 0f;
         }
         else
         {
             canvasGroup.alpha = 0.1f;
+            canvasGroupAdvanced.alpha = 0.1f;
         }
         
         if (Input.GetKey(KeyCode.Tab))
         {
             canvasGroup.alpha = 1f;
+            canvasGroupAdvanced.alpha = 1f;
             TreeConstructor constructor = theConstructor.GetComponent<TreeConstructor>();
             constructor.branchProbability = (int) branchProbabilitySlider.value;
             branchInputField.text = constructor.branchProbability.ToString();
 
             constructor.BlocksLeft = (int) blockSlider.value;
             blockInputField.text = constructor.BlocksLeft.ToString();
+        }
+
+        if (Input.GetKeyDown("r"))
+        {
+            if (advancedOptions.active)
+            {
+                advancedOptions.SetActive(false);
+            }
+            else
+            {
+                advancedOptions.SetActive(true);
+            }
         }
         
     }
@@ -96,5 +113,20 @@ public class UI : MonoBehaviour
         blockSlider.value = int.Parse(blockInputField.text);
         TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
         constructor1.BlocksLeft = (int)blockSlider.value;
+    }
+
+    public void destroyTree()
+    {
+        TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
+        if (toggle.isOn)
+        {
+            constructor1.autoGenerateTrees = true;
+            constructor1.DestroyTime = 3;
+        }
+        else
+        {
+            constructor1.autoGenerateTrees = false;
+            constructor1.DestroyTime = 0;
+        }
     }
 }

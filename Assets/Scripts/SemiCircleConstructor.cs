@@ -13,7 +13,7 @@ public class SemiCircleConstructor : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("p"))
+        if (Input.GetKeyDown("o"))
         {
             StartCoroutine(generateSemiCircle(sampleSpawnPoint, 2, sampleSize, sampleDestroyTime));
         }

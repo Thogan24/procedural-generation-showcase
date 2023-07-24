@@ -12,7 +12,7 @@ public class OrbitalConstructor : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("r"))
+        if (Input.GetKeyDown("p"))
         {
             StartCoroutine(generateCircle(sampleSpawnPoint, sampleSpawnRotation, 2, sampleBlocksLeft, sampleDestroyTime));
         }

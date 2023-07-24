@@ -7,7 +7,7 @@ public class TreeConstructor : MonoBehaviour
     public GameObject Block;
     public Vector3 sampleSpawnPoint = new Vector3(0, 0, 0);
     public Vector3 sampleSpawnRotation = new Vector3(0, 0, 0);
-    public int sampleDestroyTime = 3;
+    public int DestroyTime = 3;
     public int BlocksLeft = 1000;
     public int branchProbability = 20;
     private int branchChance = 0;
@@ -18,7 +18,7 @@ public class TreeConstructor : MonoBehaviour
 
         if (Input.GetKeyDown("e"))
         {
-            StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, sampleDestroyTime));
+            StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, DestroyTime));
         }
         if (Input.GetKey("u"))
         {
@@ -29,7 +29,7 @@ public class TreeConstructor : MonoBehaviour
             Timer += Time.deltaTime;
             while(Timer >= 4f)
             {
-                StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, sampleDestroyTime));
+                StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, DestroyTime));
                 Timer = 0f;
             }
         }
