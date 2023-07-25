@@ -20,6 +20,7 @@ public class UI : MonoBehaviour
     public TMP_InputField branchInputField;
     public Toggle toggle;
     public GameObject advancedOptions;
+    
 
     private void Awake()
     {
@@ -35,13 +36,22 @@ public class UI : MonoBehaviour
         CanvasGroup canvasGroupAdvanced = advancedOptions.GetComponent<CanvasGroup>();
         
 
-        if (Input.GetKey("q"))
+        if (Input.GetKeyDown("q"))
         {
-            canvasGroup.alpha = 0f;
-            canvasGroupAdvanced.alpha = 0f;
+            if (Panel.active)
+            {
+                Panel.SetActive(false);
+            }
+            else
+            {
+                Panel.SetActive(true);
+            }
         }
         else
         {
+            
+            
+            
             canvasGroup.alpha = 0.1f;
             canvasGroupAdvanced.alpha = 0.1f;
         }
