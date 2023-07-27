@@ -24,6 +24,9 @@ public class TreeConstructor : MonoBehaviour
 
     public bool autoDestroy2 = false;
     public bool paused = false;
+
+    public float lowRandomModifier = -10;
+    public float highRandomModifier = 20;
     private void Update()
     {
 
@@ -91,9 +94,9 @@ public class TreeConstructor : MonoBehaviour
             currentBlock.GetComponent<Renderer>().material = mat;
 
             // DIFFERENT BRANCH MODIFYERS 
-            r+=Random.Range(-10, 20) + rMod;
-            g+=Random.Range(-10, 20) + gMod;
-            b+=Random.Range(-10, 20) + bMod;
+            r+=Random.Range(lowRandomModifier, highRandomModifier) + rMod;
+            g+=Random.Range(lowRandomModifier, highRandomModifier) + gMod;
+            b+=Random.Range(lowRandomModifier, highRandomModifier) + bMod;
 
             branchChance += branchProbability;
             blocksLeft--;

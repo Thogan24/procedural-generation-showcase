@@ -1673,6 +1673,8 @@ MonoBehaviour:
   startingBMod: 0
   autoDestroy2: 0
   paused: 0
+  lowRandomModifier: -10
+  highRandomModifier: 20
 --- !u!114 &920080465
 MonoBehaviour:
   m_ObjectHideFlags: 0
