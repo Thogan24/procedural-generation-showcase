@@ -79,6 +79,15 @@ public class UI : MonoBehaviour
                 advancedOptions.SetActive(true);
             }
         }
+
+        if (Input.GetKeyDown("f"))
+        {
+            GameObject[] blocks = GameObject.FindGameObjectsWithTag("block");
+            for (int i = 0; i < blocks.Length; i++)
+            {
+                Destroy(blocks[i]);
+            }
+        }
         
     }
 
@@ -130,10 +139,10 @@ public class UI : MonoBehaviour
         TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
         if (toggle.isOn)
         {
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("block");
-            for (int i = 0; i < enemies.Length; i++)
+            GameObject[] blocks = GameObject.FindGameObjectsWithTag("block");
+            for (int i = 0; i < blocks.Length; i++)
             {
-                Destroy(enemies[i]);
+                Destroy(blocks[i]);
             }
                   constructor1.autoGenerateTrees = true;
             constructor1.DestroyTime = 3;
