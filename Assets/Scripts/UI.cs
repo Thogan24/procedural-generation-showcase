@@ -18,7 +18,9 @@ public class UI : MonoBehaviour
     public TMP_InputField blockInputField;
     public GameObject branchInputFieldObject;
     public TMP_InputField branchInputField;
-    public Toggle toggle;
+    public Toggle destroy1;
+    public Toggle destroy2;
+    public Toggle generate;
     public GameObject advancedOptions;
     
 
@@ -134,24 +136,52 @@ public class UI : MonoBehaviour
         constructor1.BlocksLeft = (int)blockSlider.value;
     }
 
-    public void destroyTree()
+    public void autoDestroyTree1()
     {
         TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
-        if (toggle.isOn)
+        if (destroy1.isOn)
         {
             GameObject[] blocks = GameObject.FindGameObjectsWithTag("block");
             for (int i = 0; i < blocks.Length; i++)
             {
                 Destroy(blocks[i]);
             }
-                  constructor1.autoGenerateTrees = true;
             constructor1.DestroyTime = 3;
 
         }
         else
         {
-            constructor1.autoGenerateTrees = false;
             constructor1.DestroyTime = 0;
+        }
+    }
+
+    public void autoDestroyTree2()
+    {
+        TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
+        if (destroy2.isOn)
+        {
+            Debug.Log("bruh");
+            constructor1.autoDestroy2 = true;
+            constructor1.DestroyTime = 0;
+
+        }
+        else
+        {
+            constructor1.autoDestroy2 = false;
+            constructor1.DestroyTime = 0;
+        }
+    }
+
+    public void autoGenerateTrees()
+    {
+        TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
+        if (generate.isOn)
+        {           
+            constructor1.autoGenerateTrees = true;
+        }
+        else
+        {
+            constructor1.autoGenerateTrees = false;
         }
     }
 }

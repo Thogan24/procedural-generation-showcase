@@ -17,6 +17,8 @@ public class TreeConstructor : MonoBehaviour
     public float startingR = 0.0f; // 101
     public float startingG = 0.0f; // 67
     public float startingB = 0.0f; // 33
+
+    public bool autoDestroy2 = false;
     private void Update()
     {
 
@@ -31,8 +33,16 @@ public class TreeConstructor : MonoBehaviour
         if (autoGenerateTrees)
         {
             Timer += Time.deltaTime;
-            while(Timer >= 4f)
+            while(Timer >= 4.2f)
             {
+                if (autoDestroy2)
+                {
+                    GameObject[] blocks = GameObject.FindGameObjectsWithTag("block");
+                    for (int i = 0; i < blocks.Length; i++)
+                    {
+                        Destroy(blocks[i]);
+                    }
+                }
                 StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, DestroyTime, startingR, startingG, startingB));
                 Timer = 0f;
             }
@@ -54,13 +64,12 @@ public class TreeConstructor : MonoBehaviour
 
             
               
-            Debug.Log(r + " " + g + " " + b);
+            // Debug.Log(r + " " + g + " " + b);
             Color blockColor = new Color(r / 255.0f, g / 255.0f, b / 255.0f);
             Material mat = new Material(Shader.Find("Diffuse"));
             mat.color = blockColor;
             currentBlock.GetComponent<Renderer>().material = mat;
 
-            //currentBlock.GetComponent<MeshRenderer>().material.color = Color.green;
 
             r+=Random.Range(-10, 20);
             g+=Random.Range(-10, 20);
