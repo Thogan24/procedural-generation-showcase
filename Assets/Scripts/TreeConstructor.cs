@@ -19,6 +19,7 @@ public class TreeConstructor : MonoBehaviour
     public float startingB = 0.0f; // 33
 
     public bool autoDestroy2 = false;
+    public bool paused = false;
     private void Update()
     {
 
@@ -30,9 +31,24 @@ public class TreeConstructor : MonoBehaviour
         {
             autoGenerateTrees = !autoGenerateTrees;
         }
+        if (Input.GetKeyDown("space"))
+        {
+            if (paused == true)
+            {
+                paused = false;
+            }
+            else
+            {
+                paused = true;
+            }
+        }
         if (autoGenerateTrees)
         {
-            Timer += Time.deltaTime;
+            if (!paused)
+            {
+                Timer += Time.deltaTime;
+            }
+            
             while(Timer >= 4.2f)
             {
                 if (autoDestroy2)

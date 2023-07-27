@@ -1665,9 +1665,9 @@ MonoBehaviour:
   BlocksLeft: 1000
   branchProbability: 20
   autoGenerateTrees: 1
-  startingR: 100
-  startingG: 100
-  startingB: 100
+  startingR: 50
+  startingG: 150
+  startingB: 250
   autoDestroy2: 0
 --- !u!114 &920080465
 MonoBehaviour:
@@ -3167,7 +3167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 428e0edbe9fe16741b67a2eefbdda2e3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
