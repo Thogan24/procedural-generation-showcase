@@ -1665,10 +1665,14 @@ MonoBehaviour:
   BlocksLeft: 1000
   branchProbability: 20
   autoGenerateTrees: 1
-  startingR: 50
-  startingG: 150
-  startingB: 250
+  startingR: 0
+  startingG: 0
+  startingB: 0
+  startingRMod: 0
+  startingGMod: 0
+  startingBMod: 0
   autoDestroy2: 0
+  paused: 0
 --- !u!114 &920080465
 MonoBehaviour:
   m_ObjectHideFlags: 0

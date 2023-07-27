@@ -18,6 +18,10 @@ public class TreeConstructor : MonoBehaviour
     public float startingG = 0.0f; // 67
     public float startingB = 0.0f; // 33
 
+    public float startingRMod = 0.0f;
+    public float startingGMod = 0.0f;
+    public float startingBMod = 0.0f;
+
     public bool autoDestroy2 = false;
     public bool paused = false;
     private void Update()
@@ -25,7 +29,7 @@ public class TreeConstructor : MonoBehaviour
 
         if (Input.GetKeyDown("e"))
         {
-            StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, DestroyTime, startingR, startingG, startingB));
+            StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, DestroyTime, startingR, startingG, startingB, startingRMod, startingGMod, startingBMod));
         }
         if (Input.GetKey("u"))
         {
@@ -59,14 +63,14 @@ public class TreeConstructor : MonoBehaviour
                         Destroy(blocks[i]);
                     }
                 }
-                StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, DestroyTime, startingR, startingG, startingB));
+                StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, DestroyTime, startingR, startingG, startingB, startingRMod, startingGMod, startingBMod));
                 Timer = 0f;
             }
         }
 
     }
 
-    IEnumerator generateTree(Vector3 spawnPoint, Vector3 spawnRotation, int blockHeight, int blocksLeft, int DestroyTimer, float r, float g, float b)
+    IEnumerator generateTree(Vector3 spawnPoint, Vector3 spawnRotation, int blockHeight, int blocksLeft, int DestroyTimer, float r, float g, float b, float rMod, float gMod, float bMod)
     {
         // Debug.Log("Generating Tree...");
         branchChance = 0;
@@ -86,10 +90,10 @@ public class TreeConstructor : MonoBehaviour
             mat.color = blockColor;
             currentBlock.GetComponent<Renderer>().material = mat;
 
-
-            r+=Random.Range(-10, 20);
-            g+=Random.Range(-10, 20);
-            b+=Random.Range(-10, 20);
+            // DIFFERENT BRANCH MODIFYERS 
+            r+=Random.Range(-10, 20) + rMod;
+            g+=Random.Range(-10, 20) + gMod;
+            b+=Random.Range(-10, 20) + bMod;
 
             branchChance += branchProbability;
             blocksLeft--;
@@ -108,7 +112,7 @@ public class TreeConstructor : MonoBehaviour
             if (Random.Range(1, 101) <= branchChance)
             {
                 // Debug.Log("Branched");
-                branch(spawnPoint, spawnRotation, blockHeight, blocksLeft, DestroyTimer, r, g, b);
+                branch(spawnPoint, spawnRotation, blockHeight, blocksLeft, DestroyTimer, r, g, b, rMod, gMod, bMod);
                 break;
             }
         }
@@ -119,7 +123,7 @@ public class TreeConstructor : MonoBehaviour
         // Debug.Log("Tree Successfully Generated.");
     }
 
-    void branch(Vector3 spawnPoint, Vector3 spawnRotation, int blockHeight, int blocksLeft, int DestroyTimer, float currentR, float currentG, float currentB)
+    void branch(Vector3 spawnPoint, Vector3 spawnRotation, int blockHeight, int blocksLeft, int DestroyTimer, float currentR, float currentG, float currentB, float currentRMod, float currentGMod, float currentBMod)
     {
             int xAxisBranch = Random.Range(0, 2);
             int zAxisBranch;
@@ -132,7 +136,7 @@ public class TreeConstructor : MonoBehaviour
                 zAxisBranch = Random.Range(0, 2);
             }
             Vector3 branchVectorSpawnPoints = new Vector3(xAxisBranch, 0, zAxisBranch);
-            StartCoroutine(generateTree(spawnPoint + branchVectorSpawnPoints, spawnRotation, blockHeight, blocksLeft / 2, DestroyTimer, currentR, currentG, currentB));
-            StartCoroutine(generateTree(spawnPoint - branchVectorSpawnPoints, spawnRotation, blockHeight, blocksLeft / 2, DestroyTimer, currentR, currentG, currentB));
+            StartCoroutine(generateTree(spawnPoint + branchVectorSpawnPoints, spawnRotation, blockHeight, blocksLeft / 2, DestroyTimer, currentR, currentG, currentB, currentRMod + 5, currentGMod + 5, currentBMod + 5));
+            StartCoroutine(generateTree(spawnPoint - branchVectorSpawnPoints, spawnRotation, blockHeight, blocksLeft / 2, DestroyTimer, currentR, currentG, currentB, currentRMod - 5, currentGMod - 5, currentBMod - 5));
     }
 }
