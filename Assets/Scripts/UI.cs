@@ -130,8 +130,14 @@ public class UI : MonoBehaviour
         TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
         if (toggle.isOn)
         {
-            constructor1.autoGenerateTrees = true;
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("block");
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                Destroy(enemies[i]);
+            }
+                  constructor1.autoGenerateTrees = true;
             constructor1.DestroyTime = 3;
+
         }
         else
         {
