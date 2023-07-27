@@ -14,15 +14,15 @@ public class TreeConstructor : MonoBehaviour
     public bool autoGenerateTrees = false;
     private float Timer = 4f;
 
-    private float r = 101.0f;
-    private float g = 67.0f;
-    private float b = 33.0f;
+    public float startingR = 0.0f; // 101
+    public float startingG = 0.0f; // 67
+    public float startingB = 0.0f; // 33
     private void Update()
     {
 
         if (Input.GetKeyDown("e"))
         {
-            StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, DestroyTime, r, g, b));
+            StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, DestroyTime, startingR, startingG, startingB));
         }
         if (Input.GetKey("u"))
         {
@@ -33,7 +33,7 @@ public class TreeConstructor : MonoBehaviour
             Timer += Time.deltaTime;
             while(Timer >= 4f)
             {
-                StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, DestroyTime, r, g, b));
+                StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, DestroyTime, startingR, startingG, startingB));
                 Timer = 0f;
             }
         }
@@ -62,9 +62,9 @@ public class TreeConstructor : MonoBehaviour
 
             //currentBlock.GetComponent<MeshRenderer>().material.color = Color.green;
 
-            r+=5;
-            g+=5;
-            b+=5;
+            r+=Random.Range(-10, 20);
+            g+=Random.Range(-10, 20);
+            b+=Random.Range(-10, 20);
 
             branchChance += branchProbability;
             blocksLeft--;
