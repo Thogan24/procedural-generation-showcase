@@ -13,6 +13,10 @@ public class TreeConstructor : MonoBehaviour
     private int branchChance = 0;
     public bool autoGenerateTrees = false;
     private float Timer = 4f;
+
+    private float r;
+    private float g;
+    private float b;
     private void Update()
     {
 
@@ -40,9 +44,9 @@ public class TreeConstructor : MonoBehaviour
     {
         // Debug.Log("Generating Tree...");
         branchChance = 0;
-        float r = 85;
-        float g = 75;
-        float b = 55;
+        float r = 101.0f;
+        float g = 67.0f;
+        float b = 33.0f;
 
         while (blocksLeft > 0)
         {
@@ -51,9 +55,16 @@ public class TreeConstructor : MonoBehaviour
             currentBlock.transform.localEulerAngles = spawnRotation;
 
             
+              
+            Debug.Log(r + " " + g + " " + b);
+            Color blockColor = new Color(r / 255.0f, g / 255.0f, b / 255.0f);
+            Material mat = new Material(Shader.Find("Diffuse"));
+            mat.color = blockColor;
+            currentBlock.GetComponent<Renderer>().material = mat;
+
             //currentBlock.GetComponent<MeshRenderer>().material.color = Color.green;
 
-            r++;
+            r+=10;
             g++;
             b++;
 
