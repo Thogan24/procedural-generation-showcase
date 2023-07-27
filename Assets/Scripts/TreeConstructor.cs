@@ -22,6 +22,10 @@ public class TreeConstructor : MonoBehaviour
     public float startingGMod = 0.0f;
     public float startingBMod = 0.0f;
 
+    public float rModAddition = 0.0f;
+    public float gModAddition = 0.0f;
+    public float bModAddition = 0.0f;
+
     public bool autoDestroy2 = false;
     public bool paused = false;
 
@@ -85,18 +89,22 @@ public class TreeConstructor : MonoBehaviour
             GameObject currentBlock = Instantiate(Block, spawnPoint + new Vector3(0, blockHeight / 2, 0), Quaternion.identity);            
             currentBlock.transform.localEulerAngles = spawnRotation;
 
-            
-              
+
+            // Color Changing
+
             // Debug.Log(r + " " + g + " " + b);
             Color blockColor = new Color(r / 255.0f, g / 255.0f, b / 255.0f);
             Material mat = new Material(Shader.Find("Diffuse"));
             mat.color = blockColor;
             currentBlock.GetComponent<Renderer>().material = mat;
 
-            // DIFFERENT BRANCH MODIFYERS 
+            
             r+=Random.Range(lowRandomModifier, highRandomModifier) + rMod;
             g+=Random.Range(lowRandomModifier, highRandomModifier) + gMod;
             b+=Random.Range(lowRandomModifier, highRandomModifier) + bMod;
+
+
+            // Actual chance of branching gets higher every block 
 
             branchChance += branchProbability;
             blocksLeft--;
@@ -139,7 +147,7 @@ public class TreeConstructor : MonoBehaviour
                 zAxisBranch = Random.Range(0, 2);
             }
             Vector3 branchVectorSpawnPoints = new Vector3(xAxisBranch, 0, zAxisBranch);
-            StartCoroutine(generateTree(spawnPoint + branchVectorSpawnPoints, spawnRotation, blockHeight, blocksLeft / 2, DestroyTimer, currentR, currentG, currentB, currentRMod + 5, currentGMod + 5, currentBMod + 5));
-            StartCoroutine(generateTree(spawnPoint - branchVectorSpawnPoints, spawnRotation, blockHeight, blocksLeft / 2, DestroyTimer, currentR, currentG, currentB, currentRMod - 5, currentGMod - 5, currentBMod - 5));
+            StartCoroutine(generateTree(spawnPoint + branchVectorSpawnPoints, spawnRotation, blockHeight, blocksLeft / 2, DestroyTimer, currentR, currentG, currentB, currentRMod + rModAddition, currentGMod + gModAddition, currentBMod + bModAddition));
+            StartCoroutine(generateTree(spawnPoint - branchVectorSpawnPoints, spawnRotation, blockHeight, blocksLeft / 2, DestroyTimer, currentR, currentG, currentB, currentRMod - rModAddition, currentGMod - gModAddition, currentBMod - bModAddition));
     }
 }

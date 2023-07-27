@@ -1671,6 +1671,9 @@ MonoBehaviour:
   startingRMod: 0
   startingGMod: 0
   startingBMod: 0
+  rModAddition: 0
+  gModAddition: 0
+  bModAddition: 0
   autoDestroy2: 0
   paused: 0
   lowRandomModifier: -10
@@ -2968,7 +2971,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 432683365}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
-        m_MethodName: destroyTree1
+        m_MethodName: autoDestroyTree1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

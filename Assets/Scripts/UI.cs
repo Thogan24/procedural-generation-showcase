@@ -92,13 +92,6 @@ public class UI : MonoBehaviour
         }
         
     }
-
-    public void blockInputButton()
-    {
-        //blockTextObject.SetActive(false);
-        //blockInputObject.SetActive(true);
-    }
-
     public void branchOnValueChanged()
     {
         if(branchInputField.text == "")
@@ -139,6 +132,8 @@ public class UI : MonoBehaviour
     public void autoDestroyTree1()
     {
         TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
+
+        // Have it wait before destroying everything
         if (destroy1.isOn)
         {
             GameObject[] blocks = GameObject.FindGameObjectsWithTag("block");
@@ -160,7 +155,6 @@ public class UI : MonoBehaviour
         TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
         if (destroy2.isOn)
         {
-            Debug.Log("bruh");
             constructor1.autoDestroy2 = true;
             constructor1.DestroyTime = 0;
 
@@ -168,7 +162,7 @@ public class UI : MonoBehaviour
         else
         {
             constructor1.autoDestroy2 = false;
-            constructor1.DestroyTime = 0;
+            
         }
     }
 
