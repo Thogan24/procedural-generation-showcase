@@ -19,12 +19,15 @@ public class UI : MonoBehaviour
     public TMP_InputField blockInputField;
     public GameObject branchInputFieldObject;
     public TMP_InputField branchInputField;
-    public GameObject rInputFieldObject;
-    public TMP_InputField rInputField;
-    public GameObject gInputFieldObject;
-    public TMP_InputField gInputField;
-    public GameObject bInputFieldObject;
-    public TMP_InputField bInputField;
+    public GameObject rStartingInputFieldObject;
+    public TMP_InputField rStartingInputField;
+    public GameObject gStartingInputFieldObject;
+    public TMP_InputField gStartingInputField;
+    public GameObject bStartingInputFieldObject;
+    public TMP_InputField bStartingInputField;
+    public TMP_InputField rEndingInputField;
+    public TMP_InputField gEndingInputField;
+    public TMP_InputField bEndingInputField;
 
     public Toggle destroy1;
     public Toggle destroy2;
@@ -37,9 +40,9 @@ public class UI : MonoBehaviour
         //Debug.Log(inputFieldObject.GetComponent<TMP_InputField>());
         blockInputField = blockInputFieldObject.GetComponent<TMP_InputField>();
         branchInputField = branchInputFieldObject.GetComponent<TMP_InputField>();
-        rInputField = rInputFieldObject.GetComponent<TMP_InputField>();
-        gInputField = gInputFieldObject.GetComponent<TMP_InputField>();
-        bInputField = bInputFieldObject.GetComponent<TMP_InputField>();
+        rStartingInputField = rStartingInputFieldObject.GetComponent<TMP_InputField>();
+        gStartingInputField = gStartingInputFieldObject.GetComponent<TMP_InputField>();
+        bStartingInputField = bStartingInputFieldObject.GetComponent<TMP_InputField>();
     }
 
 
@@ -193,51 +196,51 @@ public class UI : MonoBehaviour
     public void RGBOnValueChanged()
     {
 
-        if (rInputField.text == "")
+        if (rStartingInputField.text == "")
         {
-            rInputField.text = "0";
+            rStartingInputField.text = "0";
         }
-        if (int.Parse(rInputField.text) > 255)
+        if (int.Parse(rStartingInputField.text) > 255)
         {
-            rInputField.text = "255";
+            rStartingInputField.text = "255";
         }
-        else if (int.Parse(rInputField.text) < 0)
+        else if (int.Parse(rStartingInputField.text) < 0)
         {
-            rInputField.text = "0";
-        }
-
-
-        if (gInputField.text == "")
-        {
-            gInputField.text = "0";
-        }
-        if (int.Parse(gInputField.text) > 255)
-        {
-            gInputField.text = "255";
-        }
-        else if (int.Parse(gInputField.text) < 0)
-        {
-            gInputField.text = "0";
+            rStartingInputField.text = "0";
         }
 
 
-        if (bInputField.text == "")
+        if (gStartingInputField.text == "")
         {
-            bInputField.text = "0";
+            gStartingInputField.text = "0";
         }
-        if (int.Parse(bInputField.text) > 255)
+        if (int.Parse(gStartingInputField.text) > 255)
         {
-            bInputField.text = "255";
+            gStartingInputField.text = "255";
         }
-        else if (int.Parse(bInputField.text) < 0)
+        else if (int.Parse(gStartingInputField.text) < 0)
         {
-            bInputField.text = "0";
+            gStartingInputField.text = "0";
+        }
+
+
+        if (bStartingInputField.text == "")
+        {
+            bStartingInputField.text = "0";
+        }
+        if (int.Parse(bStartingInputField.text) > 255)
+        {
+            bStartingInputField.text = "255";
+        }
+        else if (int.Parse(bStartingInputField.text) < 0)
+        {
+            bStartingInputField.text = "0";
         }
 
         TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
-        constructor1.startingR = int.Parse(rInputField.text);
-        constructor1.startingG = int.Parse(gInputField.text);
-        constructor1.startingB = int.Parse(bInputField.text);
+        constructor1.startingR = int.Parse(rStartingInputField.text);
+        constructor1.startingG = int.Parse(gStartingInputField.text);
+        constructor1.startingB = int.Parse(bStartingInputField.text);
 
     }
 }
