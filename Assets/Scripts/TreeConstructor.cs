@@ -31,6 +31,11 @@ public class TreeConstructor : MonoBehaviour
 
     public float lowRandomModifier = -10;
     public float highRandomModifier = 20;
+
+    public int branchCount = 0;
+    public int totalBranches = 0;
+    public int totalTrees = -1;
+    public int averageBranchPerTree = 0;
     private void Update()
     {
 
@@ -72,6 +77,10 @@ public class TreeConstructor : MonoBehaviour
                 }
                 StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, DestroyTime, startingR, startingG, startingB, startingRMod, startingGMod, startingBMod));
                 Timer = 0f;
+                totalBranches += branchCount;
+                branchCount = 0;
+                totalTrees += 1;
+                averageBranchPerTree = totalBranches / totalTrees;
             }
         }
 
@@ -124,6 +133,7 @@ public class TreeConstructor : MonoBehaviour
             {
                 // Debug.Log("Branched");
                 branch(spawnPoint, spawnRotation, blockHeight, blocksLeft, DestroyTimer, r, g, b, rMod, gMod, bMod);
+                branchCount += 1;
                 break;
             }
         }

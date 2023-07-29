@@ -2667,6 +2667,10 @@ MonoBehaviour:
   paused: 0
   lowRandomModifier: -10
   highRandomModifier: 20
+  branchCount: 0
+  totalBranches: 0
+  totalTrees: -1
+  averageBranchPerTree: 279
 --- !u!114 &920080465
 MonoBehaviour:
   m_ObjectHideFlags: 0

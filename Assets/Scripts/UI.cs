@@ -125,6 +125,10 @@ public class UI : MonoBehaviour
         branchProbabilitySlider.value = int.Parse(branchInputField.text);
         TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
         constructor1.branchProbability = (int)blockSlider.value;
+        constructor1.branchCount = 0;
+        constructor1.averageBranchPerTree = 0;
+        constructor1.totalTrees = 0;
+        constructor1.totalBranches = 0;
     }
 
     public void blockOnValueChanged()
@@ -141,6 +145,11 @@ public class UI : MonoBehaviour
         blockSlider.value = int.Parse(blockInputField.text);
         TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
         constructor1.BlocksLeft = (int)blockSlider.value;
+
+        constructor1.branchCount = 0;
+        constructor1.averageBranchPerTree = 0;
+        constructor1.totalTrees = 0;
+        constructor1.totalBranches = 0;
     }
 
     public void autoDestroyTree1()
