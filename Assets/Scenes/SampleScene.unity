@@ -494,7 +494,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "0\u200B"
+  m_text: "255\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50feff731200dd94fb71f068580172ca, type: 2}
   m_sharedMaterial: {fileID: -2169177686920792096, guid: 50feff731200dd94fb71f068580172ca, type: 2}
@@ -1519,7 +1519,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "0\u200B"
+  m_text: "255\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50feff731200dd94fb71f068580172ca, type: 2}
   m_sharedMaterial: {fileID: -2169177686920792096, guid: 50feff731200dd94fb71f068580172ca, type: 2}
@@ -2657,6 +2657,9 @@ MonoBehaviour:
   startingR: 0
   startingG: 0
   startingB: 0
+  endingR: 255
+  endingG: 255
+  endingB: 255
   startingRMod: 0
   startingGMod: 0
   startingBMod: 0
@@ -2665,8 +2668,8 @@ MonoBehaviour:
   bModAddition: 0
   autoDestroy2: 0
   paused: 0
-  lowRandomModifier: -10
-  highRandomModifier: 20
+  lowRandomModifier: 0
+  highRandomModifier: 0
   branchCount: 0
   totalBranches: 0
   totalTrees: -1
@@ -4045,7 +4048,7 @@ GameObject:
   - component: {fileID: 1255816206}
   - component: {fileID: 1255816205}
   m_Layer: 5
-  m_Name: G
+  m_Name: G2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4154,7 +4157,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 432683365}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
-        m_MethodName: RGBOnValueChanged
+        m_MethodName: RGBOnValueChangedEnding
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4170,7 +4173,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 0
+  m_Text: 255
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -4442,7 +4445,7 @@ GameObject:
   - component: {fileID: 1353164995}
   - component: {fileID: 1353164997}
   m_Layer: 5
-  m_Name: R
+  m_Name: R2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4589,7 +4592,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 432683365}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
-        m_MethodName: RGBOnValueChanged
+        m_MethodName: RGBOnValueChangedEnding
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4605,7 +4608,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 0
+  m_Text: 255
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -5848,7 +5851,7 @@ GameObject:
   - component: {fileID: 1738816431}
   - component: {fileID: 1738816430}
   m_Layer: 5
-  m_Name: B
+  m_Name: B2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5957,7 +5960,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 432683365}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
-        m_MethodName: RGBOnValueChanged
+        m_MethodName: RGBOnValueChangedEnding
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5973,7 +5976,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 0
+  m_Text: 255
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -6900,7 +6903,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "0\u200B"
+  m_text: "255\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50feff731200dd94fb71f068580172ca, type: 2}
   m_sharedMaterial: {fileID: -2169177686920792096, guid: 50feff731200dd94fb71f068580172ca, type: 2}

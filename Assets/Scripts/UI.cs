@@ -252,4 +252,61 @@ public class UI : MonoBehaviour
         constructor1.startingB = int.Parse(bStartingInputField.text);
 
     }
+
+    public void RGBOnValueChangedEnding()
+    {
+
+        if (rEndingInputField.text == "")
+        {
+            rEndingInputField.text = "0";
+        }
+        if (int.Parse(rEndingInputField.text) > 255)
+        {
+            rEndingInputField.text = "255";
+        }
+        else if (int.Parse(rEndingInputField.text) < 0)
+        {
+            rEndingInputField.text = "0";
+        }
+
+
+        if (gEndingInputField.text == "")
+        {
+            gEndingInputField.text = "0";
+        }
+        if (int.Parse(gEndingInputField.text) > 255)
+        {
+            gEndingInputField.text = "255";
+        }
+        else if (int.Parse(gEndingInputField.text) < 0)
+        {
+            gEndingInputField.text = "0";
+        }
+
+
+        if (bEndingInputField.text == "")
+        {
+            bEndingInputField.text = "0";
+        }
+        if (int.Parse(bEndingInputField.text) > 255)
+        {
+            bEndingInputField.text = "255";
+        }
+        else if (int.Parse(bEndingInputField.text) < 0)
+        {
+            bEndingInputField.text = "0";
+        }
+
+        TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
+        constructor1.startingR = int.Parse(rStartingInputField.text);
+        constructor1.startingG = int.Parse(gStartingInputField.text);
+        constructor1.startingB = int.Parse(bStartingInputField.text);
+        constructor1.endingR = int.Parse(rStartingInputField.text);
+        constructor1.endingG = int.Parse(gStartingInputField.text);
+        constructor1.endingB = int.Parse(bStartingInputField.text);
+
+    }
+    
+
+
 }

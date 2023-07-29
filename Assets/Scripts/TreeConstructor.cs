@@ -18,6 +18,10 @@ public class TreeConstructor : MonoBehaviour
     public float startingG = 0.0f; // 67
     public float startingB = 0.0f; // 33
 
+    public float endingR = 255.0f; // 101
+    public float endingG = 255.0f; // 67
+    public float endingB = 255.0f; // 33
+
     public float startingRMod = 0.0f;
     public float startingGMod = 0.0f;
     public float startingBMod = 0.0f;
@@ -107,10 +111,10 @@ public class TreeConstructor : MonoBehaviour
             mat.color = blockColor;
             currentBlock.GetComponent<Renderer>().material = mat;
 
-            
-            r+=Random.Range(lowRandomModifier, highRandomModifier) + rMod;
-            g+=Random.Range(lowRandomModifier, highRandomModifier) + gMod;
-            b+=Random.Range(lowRandomModifier, highRandomModifier) + bMod;
+            Debug.Log(r);
+            r+=Random.Range(lowRandomModifier, highRandomModifier) + rMod + ((endingR - startingR) / averageBranchPerTree) * 10;
+            g+=Random.Range(lowRandomModifier, highRandomModifier) + gMod + ((endingG - startingG) / averageBranchPerTree) * 10;
+            b+=Random.Range(lowRandomModifier, highRandomModifier) + bMod + ((endingB - startingB) / averageBranchPerTree) * 10;
 
 
             // Actual chance of branching gets higher every block 
