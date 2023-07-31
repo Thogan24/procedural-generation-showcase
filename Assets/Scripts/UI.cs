@@ -29,6 +29,8 @@ public class UI : MonoBehaviour
     public TMP_InputField gEndingInputField;
     public TMP_InputField bEndingInputField;
 
+    public TMP_InputField waitForSecondsInputField;
+
     public Toggle destroy1;
     public Toggle destroy2;
     public Toggle generate;
@@ -301,10 +303,20 @@ public class UI : MonoBehaviour
         constructor1.startingR = int.Parse(rStartingInputField.text);
         constructor1.startingG = int.Parse(gStartingInputField.text);
         constructor1.startingB = int.Parse(bStartingInputField.text);
-        constructor1.endingR = int.Parse(rStartingInputField.text);
-        constructor1.endingG = int.Parse(gStartingInputField.text);
-        constructor1.endingB = int.Parse(bStartingInputField.text);
+        constructor1.endingR = int.Parse(rEndingInputField.text);
+        constructor1.endingG = int.Parse(gEndingInputField.text);
+        constructor1.endingB = int.Parse(bEndingInputField.text);
 
+    }
+
+    public void Delay()
+    {
+        
+        TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
+
+        constructor1.waitForSeconds = float.Parse(waitForSecondsInputField.text);
+        Debug.Log(float.Parse(waitForSecondsInputField.text));
+            
     }
     
 

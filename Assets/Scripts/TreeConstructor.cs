@@ -40,6 +40,8 @@ public class TreeConstructor : MonoBehaviour
     public int totalBranches = 0;
     public int totalTrees = -1;
     public int averageBranchPerTree = 0;
+    public float waitForSeconds = 0.1f;
+    public float pauseTime = .5f;
     private void Update()
     {
 
@@ -69,7 +71,7 @@ public class TreeConstructor : MonoBehaviour
                 Timer += Time.deltaTime;
             }
             
-            while(Timer >= 4.2f)
+            while(Timer >= pauseTime)
             {
                 if (autoDestroy2)
                 {
@@ -115,7 +117,6 @@ public class TreeConstructor : MonoBehaviour
             mat.color = blockColor;
             currentBlock.GetComponent<Renderer>().material = mat;
 
-            Debug.Log(r);
             r+=Random.Range(lowRandomModifier, highRandomModifier) + rMod + ((endingR - startingR) / averageBranchPerTree) * 10;
             g+=Random.Range(lowRandomModifier, highRandomModifier) + gMod + ((endingG - startingG) / averageBranchPerTree) * 10;
             b+=Random.Range(lowRandomModifier, highRandomModifier) + bMod + ((endingB - startingB) / averageBranchPerTree) * 10;
@@ -131,7 +132,7 @@ public class TreeConstructor : MonoBehaviour
             spawnPoint += new Vector3(-spawnRotation.z / 20, blockHeight, spawnRotation.x / 20);
             spawnRotation += new Vector3(xAxisRotationChange, 0, zAxisRotationChange);
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(waitForSeconds);
 
             if (DestroyTimer > 0)
             {
