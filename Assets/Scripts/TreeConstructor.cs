@@ -70,7 +70,10 @@ public class TreeConstructor : MonoBehaviour
             {
                 Timer += Time.deltaTime;
             }
-            
+            if (pauseTime < 0.1f)
+            {
+                pauseTime = 0.1f;
+            }
             while(Timer >= pauseTime)
             {
                 if (autoDestroy2)

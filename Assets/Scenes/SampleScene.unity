@@ -3911,7 +3911,7 @@ MonoBehaviour:
   Block: {fileID: 1832581053466536651, guid: a2e819f6ae8ee1e4d9bc9c53848c2aa6, type: 3}
   sampleSpawnPoint: {x: 0, y: 0, z: 0}
   sampleSpawnRotation: {x: 0, y: 0, z: 0}
-  DestroyTime: 3
+  DestroyTime: 1
   BlocksLeft: 1000
   branchProbability: 20
   autoGenerateTrees: 1
@@ -3935,7 +3935,8 @@ MonoBehaviour:
   totalBranches: 0
   totalTrees: -1
   averageBranchPerTree: 279
-  waitForSeconds: 0.1
+  waitForSeconds: 0.01
+  pauseTime: 1.5
 --- !u!114 &920080465
 MonoBehaviour:
   m_ObjectHideFlags: 0
