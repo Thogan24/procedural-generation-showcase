@@ -84,7 +84,11 @@ public class TreeConstructor : MonoBehaviour
                 totalBranches += branchCount;
                 branchCount = 0;
                 totalTrees += 1;
-                averageBranchPerTree = totalBranches / totalTrees;
+                if (totalTrees != 0)
+                {
+                    averageBranchPerTree = totalBranches / totalTrees;
+                }
+                
             }
         }
 
