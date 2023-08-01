@@ -5,6 +5,9 @@ using System.Collections;
 public class TreeConstructor : MonoBehaviour
 {
     public GameObject Block;
+    public GameObject Capsule;
+    public bool useCapsules;
+
     public Vector3 sampleSpawnPoint = new Vector3(0, 0, 0);
     public Vector3 sampleSpawnRotation = new Vector3(0, 0, 0);
     public int DestroyTime = 3;
@@ -107,8 +110,16 @@ public class TreeConstructor : MonoBehaviour
 
         while (blocksLeft > 0)
         {
-            
-            GameObject currentBlock = Instantiate(Block, spawnPoint + new Vector3(0, blockHeight / 2, 0), Quaternion.identity);            
+            GameObject currentBlock;
+            if (useCapsules)
+            {
+                currentBlock = Instantiate(Capsule, spawnPoint + new Vector3(0, blockHeight / 2, 0), Quaternion.identity);
+            }
+            else
+            {
+                currentBlock = Instantiate(Block, spawnPoint + new Vector3(0, blockHeight / 2, 0), Quaternion.identity);
+            }
+                      
             currentBlock.transform.localEulerAngles = spawnRotation;
 
 

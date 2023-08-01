@@ -34,6 +34,7 @@ public class UI : MonoBehaviour
     public Toggle destroy1;
     public Toggle destroy2;
     public Toggle generate;
+    public Toggle capsuleToggle;
     public GameObject advancedOptions;
 
 
@@ -317,6 +318,21 @@ public class UI : MonoBehaviour
         constructor1.waitForSeconds = float.Parse(waitForSecondsInputField.text);
         Debug.Log(float.Parse(waitForSecondsInputField.text));
             
+    }
+
+    public void useCapsules()
+    {
+        TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
+
+        if (capsuleToggle.isOn)
+        {
+            constructor1.useCapsules = true;
+        }
+        else
+        {
+            constructor1.useCapsules = false;
+        }
+        
     }
     
 
