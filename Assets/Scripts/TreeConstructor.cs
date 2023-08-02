@@ -13,6 +13,8 @@ public class TreeConstructor : MonoBehaviour
     public int DestroyTime = 3;
     public int BlocksLeft = 1000;
     public int branchProbability = 20;
+    public float blockHeight = 2f;
+
     private int branchChance = 0;
     public bool autoGenerateTrees = false;
     private float Timer = 4f;
@@ -50,7 +52,7 @@ public class TreeConstructor : MonoBehaviour
 
         if (Input.GetKeyDown("e"))
         {
-            StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, DestroyTime, startingR, startingG, startingB, startingRMod, startingGMod, startingBMod));
+            StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, blockHeight, BlocksLeft, DestroyTime, startingR, startingG, startingB, startingRMod, startingGMod, startingBMod));
         }
         if (Input.GetKey("u"))
         {
@@ -102,7 +104,7 @@ public class TreeConstructor : MonoBehaviour
 
     }
 
-    IEnumerator generateTree(Vector3 spawnPoint, Vector3 spawnRotation, int blockHeight, int blocksLeft, int DestroyTimer, float r, float g, float b, float rMod, float gMod, float bMod)
+    IEnumerator generateTree(Vector3 spawnPoint, Vector3 spawnRotation, float blockHeight, int blocksLeft, int DestroyTimer, float r, float g, float b, float rMod, float gMod, float bMod)
     {
         // Debug.Log("Generating Tree...");
         branchChance = 0;
@@ -117,7 +119,7 @@ public class TreeConstructor : MonoBehaviour
             }
             else
             {
-                currentBlock = Instantiate(Block, spawnPoint + new Vector3(0, blockHeight / 2, 0), Quaternion.identity);
+                currentBlock = Instantiate(Block, spawnPoint , Quaternion.identity); //  + new Vector3(0, blockHeight / 2, 0)
             }
                       
             currentBlock.transform.localEulerAngles = spawnRotation;
@@ -143,7 +145,8 @@ public class TreeConstructor : MonoBehaviour
 
             float xAxisRotationChange = Random.Range(-21, 21);
             float zAxisRotationChange = Random.Range(-21, 21);
-            spawnPoint += new Vector3(-spawnRotation.z / 20, blockHeight, spawnRotation.x / 20);
+            Debug.Log(new Vector3(-spawnRotation.z / 20, blockHeight / 2, spawnRotation.x / 20));
+            spawnPoint += new Vector3(-spawnRotation.z / 20, blockHeight / 2, spawnRotation.x / 20); // blockHeight
             spawnRotation += new Vector3(xAxisRotationChange, 0, zAxisRotationChange);
 
             yield return new WaitForSeconds(waitForSeconds);
@@ -167,7 +170,7 @@ public class TreeConstructor : MonoBehaviour
         // Debug.Log("Tree Successfully Generated.");
     }
 
-    void branch(Vector3 spawnPoint, Vector3 spawnRotation, int blockHeight, int blocksLeft, int DestroyTimer, float currentR, float currentG, float currentB, float currentRMod, float currentGMod, float currentBMod)
+    void branch(Vector3 spawnPoint, Vector3 spawnRotation, float blockHeight, int blocksLeft, int DestroyTimer, float currentR, float currentG, float currentB, float currentRMod, float currentGMod, float currentBMod)
     {
             int xAxisBranch = Random.Range(0, 2);
             int zAxisBranch;

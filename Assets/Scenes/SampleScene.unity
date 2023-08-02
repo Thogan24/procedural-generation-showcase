@@ -4053,6 +4053,7 @@ MonoBehaviour:
   DestroyTime: 1
   BlocksLeft: 1000
   branchProbability: 20
+  blockHeight: 1
   autoGenerateTrees: 1
   startingR: 0
   startingG: 0
