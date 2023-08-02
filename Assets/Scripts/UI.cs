@@ -29,6 +29,9 @@ public class UI : MonoBehaviour
     public TMP_InputField gEndingInputField;
     public TMP_InputField bEndingInputField;
 
+    public TMP_InputField lowerInputField;
+    public TMP_InputField upperInputField;
+
     public TMP_InputField waitForSecondsInputField;
 
     public Toggle destroy1;
@@ -312,12 +315,12 @@ public class UI : MonoBehaviour
 
     public void Delay()
     {
-        
+
         TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
 
         constructor1.waitForSeconds = float.Parse(waitForSecondsInputField.text);
         Debug.Log(float.Parse(waitForSecondsInputField.text));
-            
+
     }
 
     public void useCapsules()
@@ -332,9 +335,44 @@ public class UI : MonoBehaviour
         {
             constructor1.useCapsules = false;
         }
-        
+
     }
-    
+
+    public void randomnessValueChanged()
+    {
+
+        if (lowerInputField.text == "")
+        {
+            lowerInputField.text = "0";
+        }
+        if (int.Parse(lowerInputField.text) > int.Parse(upperInputField.text))
+        {
+            lowerInputField.text = "255";
+        }
+        else if (int.Parse(lowerInputField.text) < -255)
+        {
+            lowerInputField.text = "0";
+        }
 
 
+        if (upperInputField.text == "")
+        {
+            upperInputField.text = "0";
+        }
+        if (int.Parse(upperInputField.text) > 255)
+        {
+            upperInputField.text = "255";
+        }
+        else if (int.Parse(upperInputField.text) < int.Parse(lowerInputField.text))
+        {
+            upperInputField.text = "0";
+        }
+
+
+        TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
+
+        constructor1.lowRandomModifier = int.Parse(lowerInputField.text);
+        constructor1.highRandomModifier = int.Parse(upperInputField.text);
+
+    }
 }

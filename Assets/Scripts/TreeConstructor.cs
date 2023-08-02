@@ -13,7 +13,7 @@ public class TreeConstructor : MonoBehaviour
     public int DestroyTime = 3;
     public int BlocksLeft = 1000;
     public int branchProbability = 20;
-    public float blockHeight = 2f;
+    public float blockHeight;
 
     private int branchChance = 0;
     public bool autoGenerateTrees = false;
@@ -89,7 +89,7 @@ public class TreeConstructor : MonoBehaviour
                         Destroy(blocks[i]);
                     }
                 }
-                StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, 2, BlocksLeft, DestroyTime, startingR, startingG, startingB, startingRMod, startingGMod, startingBMod));
+                StartCoroutine(generateTree(sampleSpawnPoint, sampleSpawnRotation, blockHeight, BlocksLeft, DestroyTime, startingR, startingG, startingB, startingRMod, startingGMod, startingBMod));
                 Timer = 0f;
                 totalBranches += branchCount;
                 branchCount = 0;
@@ -119,7 +119,7 @@ public class TreeConstructor : MonoBehaviour
             }
             else
             {
-                currentBlock = Instantiate(Block, spawnPoint , Quaternion.identity); //  + new Vector3(0, blockHeight / 2, 0)
+                currentBlock = Instantiate(Block, spawnPoint, Quaternion.identity); // + new Vector3(0, blockHeight / 2, 0)
             }
                       
             currentBlock.transform.localEulerAngles = spawnRotation;
@@ -145,8 +145,8 @@ public class TreeConstructor : MonoBehaviour
 
             float xAxisRotationChange = Random.Range(-21, 21);
             float zAxisRotationChange = Random.Range(-21, 21);
-            Debug.Log(new Vector3(-spawnRotation.z / 20, blockHeight / 2, spawnRotation.x / 20));
-            spawnPoint += new Vector3(-spawnRotation.z / 20, blockHeight / 2, spawnRotation.x / 20); // blockHeight
+            //Debug.Log(new Vector3(-spawnRotation.z / 20, blockHeight, spawnRotation.x / 20));
+            spawnPoint += new Vector3(-spawnRotation.z / 20, blockHeight, spawnRotation.x / 20); // blockHeight
             spawnRotation += new Vector3(xAxisRotationChange, 0, zAxisRotationChange);
 
             yield return new WaitForSeconds(waitForSeconds);
