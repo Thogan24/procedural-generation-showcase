@@ -13,10 +13,10 @@ public class SemiCircleConstructor : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("o"))
-        {
-            StartCoroutine(generateSemiCircle(sampleSpawnPoint, 2, sampleSize, sampleDestroyTime));
-        }
+        //if (Input.GetKeyDown("o"))
+        //{
+        //    StartCoroutine(generateSemiCircle(sampleSpawnPoint, 2, sampleSize, sampleDestroyTime));
+        //}
     }
 
     IEnumerator generateSemiCircle(Vector3 spawnPoint, int blockHeight, int size, int DestroyTimer)
