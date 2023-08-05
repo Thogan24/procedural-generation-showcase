@@ -6,6 +6,7 @@ public class TreeConstructor : MonoBehaviour
 {
     public GameObject Block;
     public GameObject Capsule;
+    public GameObject Vine;
     public bool useCapsules;
 
     public Vector3 sampleSpawnPoint = new Vector3(0, 0, 0);
@@ -13,6 +14,7 @@ public class TreeConstructor : MonoBehaviour
     public int DestroyTime = 3;
     public int BlocksLeft = 1000;
     public int branchProbability = 20;
+    public int vineProbability = 5;
     public float blockHeight;
 
     private int branchChance = 0;
@@ -108,7 +110,7 @@ public class TreeConstructor : MonoBehaviour
     {
         // Debug.Log("Generating Tree...");
         branchChance = 0;
-        
+
 
         while (blocksLeft > 0)
         {
@@ -121,7 +123,7 @@ public class TreeConstructor : MonoBehaviour
             {
                 currentBlock = Instantiate(Block, spawnPoint, Quaternion.identity); // + new Vector3(0, blockHeight / 2, 0)
             }
-                      
+
             currentBlock.transform.localEulerAngles = spawnRotation;
 
 
@@ -133,9 +135,9 @@ public class TreeConstructor : MonoBehaviour
             mat.color = blockColor;
             currentBlock.GetComponent<Renderer>().material = mat;
 
-            r+=Random.Range(lowRandomModifier, highRandomModifier) + rMod + ((endingR - startingR) / averageBranchPerTree) * 10;
-            g+=Random.Range(lowRandomModifier, highRandomModifier) + gMod + ((endingG - startingG) / averageBranchPerTree) * 10;
-            b+=Random.Range(lowRandomModifier, highRandomModifier) + bMod + ((endingB - startingB) / averageBranchPerTree) * 10;
+            r += Random.Range(lowRandomModifier, highRandomModifier) + rMod + ((endingR - startingR) / averageBranchPerTree) * 10;
+            g += Random.Range(lowRandomModifier, highRandomModifier) + gMod + ((endingG - startingG) / averageBranchPerTree) * 10;
+            b += Random.Range(lowRandomModifier, highRandomModifier) + bMod + ((endingB - startingB) / averageBranchPerTree) * 10;
 
 
             // Actual chance of branching gets higher every block 
@@ -150,11 +152,16 @@ public class TreeConstructor : MonoBehaviour
             spawnRotation += new Vector3(xAxisRotationChange, 0, zAxisRotationChange);
 
             yield return new WaitForSeconds(waitForSeconds);
+            if (Random.Range(0, 101) <= vineProbability)
+            {
+                vine(spawnPoint, spawnRotation, blockHeight, 10, DestroyTimer, r, g, b);
+            }
 
             if (DestroyTimer > 0)
             {
                 Destroy(currentBlock, DestroyTimer);
             }
+            
             if (Random.Range(1, 101) <= branchChance)
             {
                 // Debug.Log("Branched");
@@ -185,5 +192,24 @@ public class TreeConstructor : MonoBehaviour
             Vector3 branchVectorSpawnPoints = new Vector3(xAxisBranch, 0, zAxisBranch);
             StartCoroutine(generateTree(spawnPoint + branchVectorSpawnPoints, spawnRotation, blockHeight, blocksLeft / 2, DestroyTimer, currentR, currentG, currentB, currentRMod + rModAddition, currentGMod + gModAddition, currentBMod + bModAddition));
             StartCoroutine(generateTree(spawnPoint - branchVectorSpawnPoints, spawnRotation, blockHeight, blocksLeft / 2, DestroyTimer, currentR, currentG, currentB, currentRMod - rModAddition, currentGMod - gModAddition, currentBMod - bModAddition));
+    }
+
+    void vine(Vector3 spawnPoint, Vector3 spawnRotation, float blockHeight, int vineLength, int DestroyTimer, float currentR, float currentG, float currentB)
+    {
+        GameObject currentVine;
+        currentVine = Instantiate(Vine, spawnPoint - new Vector3(0, blockHeight / 2, 0), Quaternion.identity);
+        if (DestroyTimer > 0)
+        {
+            Destroy(currentVine, DestroyTimer);
+        }
+        Color vineColor = new Color(currentR / 255.0f, currentG / 255.0f, currentB / 255.0f);
+        Material mat = new Material(Shader.Find("Diffuse"));
+        mat.color = vineColor;
+        currentVine.GetComponent<Renderer>().material = mat;
+        spawnPoint -= new Vector3(0, blockHeight, 0);
+        if (vineLength > 0)
+        {
+            vine(spawnPoint, spawnRotation, blockHeight, vineLength - 1, DestroyTimer, currentR, currentG, currentB);
+        }
     }
 }
