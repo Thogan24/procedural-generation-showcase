@@ -154,7 +154,7 @@ public class TreeConstructor : MonoBehaviour
             yield return new WaitForSeconds(waitForSeconds);
             if (Random.Range(0, 101) <= vineProbability)
             {
-                vine(spawnPoint, spawnRotation, blockHeight, 10, DestroyTimer, r, g, b);
+                vine(spawnPoint, new Vector3(0, 0, 0), 0.5f, 10, DestroyTimer, r, g, b);
             }
 
             if (DestroyTimer > 0)
@@ -202,11 +202,25 @@ public class TreeConstructor : MonoBehaviour
         {
             Destroy(currentVine, DestroyTimer);
         }
+        currentVine.transform.localEulerAngles = spawnRotation;
+
         Color vineColor = new Color(currentR / 255.0f, currentG / 255.0f, currentB / 255.0f);
-        Material mat = new Material(Shader.Find("Diffuse"));
+        Material mat = new Material(Shader.Find("Transparent/Diffuse"));
         mat.color = vineColor;
-        currentVine.GetComponent<Renderer>().material = mat;
-        spawnPoint -= new Vector3(0, blockHeight, 0);
+        //currentVine.GetComponent<Renderer>().material = mat;
+        Color tempcolor = currentVine.GetComponent<MeshRenderer>().material.color;
+        vineColor.a = .8f;
+        
+        mat.color = vineColor;
+        currentVine.GetComponent<MeshRenderer>().material = mat;
+
+        
+        float xAxisRotationChange = Random.Range(-2, 2);
+        float zAxisRotationChange = Random.Range(-2, 2);
+        //Debug.Log(new Vector3(-spawnRotation.z / 20, blockHeight, spawnRotation.x / 20));
+        spawnPoint -= new Vector3(-spawnRotation.z / 20, blockHeight, spawnRotation.x / 20); // blockHeight
+        spawnRotation += new Vector3(xAxisRotationChange, 0, zAxisRotationChange);
+
         if (vineLength > 0)
         {
             vine(spawnPoint, spawnRotation, blockHeight, vineLength - 1, DestroyTimer, currentR, currentG, currentB);
