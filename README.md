@@ -6,8 +6,17 @@ Made in Unity/C#
 
 Normal Tree:
 
-![Demo](./TreeBuilding.gif)
+![NormalTree](./TreeBuilding.gif)
+
+Tree with Color:
+
+![Color](./EndingRGBValue.gif)
+
+Tree with Random Colors:
+
+![RandomColor](./Randomness.gif)
 
 Very Large Tree:
 
 ![LargeTree](./LargeTree.gif)
+
