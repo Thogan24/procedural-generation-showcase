@@ -38,6 +38,7 @@ public class UI : MonoBehaviour
     public Toggle destroy2;
     public Toggle generate;
     public Toggle capsuleToggle;
+    public Toggle randomnessToggle;
     public GameObject advancedOptions;
 
 
@@ -334,6 +335,21 @@ public class UI : MonoBehaviour
         else
         {
             constructor1.useCapsules = false;
+        }
+
+    }
+
+    public void randomnessButton()
+    {
+        TreeConstructor constructor1 = theConstructor.GetComponent<TreeConstructor>();
+
+        if (randomnessToggle.isOn)
+        {
+            lowerInputField.text = "0";
+        }
+        else
+        {
+            upperInputField.text = "0";
         }
 
     }

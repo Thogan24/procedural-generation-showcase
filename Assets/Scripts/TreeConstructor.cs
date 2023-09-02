@@ -152,10 +152,10 @@ public class TreeConstructor : MonoBehaviour
             spawnRotation += new Vector3(xAxisRotationChange, 0, zAxisRotationChange);
 
             yield return new WaitForSeconds(waitForSeconds);
-            if (Random.Range(0, 101) <= vineProbability)
+/*            if (Random.Range(0, 101) <= vineProbability)
             {
                 vine(spawnPoint, new Vector3(0, 0, 0), 0.5f, 10, DestroyTimer, r, g, b);
-            }
+            }*/
 
             if (DestroyTimer > 0)
             {
